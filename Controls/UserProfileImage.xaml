@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="WPFModernVerticalMenu.Controls.UserProfileImage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFModernVerticalMenu.Controls"
+             mc:Ignorable="d" 
+             
+             xmlns:hc="https://handyorg.github.io/handycontrol">
+    <hc:TransitioningContentControl>
+        <hc:ScrollViewer IsInertiaEnabled="True">
+            <hc:UniformSpacingPanel Margin="32" ChildWrapping="Wrap" VerticalAlignment="Center" Spacing="32" HorizontalAlignment="Center">
+                <hc:ImageSelector Width="150" Height="150" hc:BorderElement.CornerRadius="50" StrokeDashArray="10,5,10" BorderBrush="{DynamicResource DangerBrush}" Background="{DynamicResource PrimaryBlueColor}"/>
+            </hc:UniformSpacingPanel>
+        </hc:ScrollViewer>
+    </hc:TransitioningContentControl>
+</UserControl>
