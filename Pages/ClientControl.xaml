@@ -47,6 +47,7 @@
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Email or Phone"/>
+                        
                         <DatePicker
                     Width="200"
                     DisplayDateEnd="1.07.2006"
@@ -58,7 +59,10 @@
                     material:HintAssist.Hint="Birth Day"
                     Background="{DynamicResource PrimaryTextColor}" />
                     </StackPanel>
-                    <Button
+
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
+                        <TextBlock Text="1414" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20" Margin="0,0,0,10"/>
+                        <Button
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
                  Grid.Row="2"
@@ -69,20 +73,41 @@
                  material:ButtonAssist.CornerRadius="5"
                  ToolTip="MaterialDesignRaisedLightButton with Round Corners"
                  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                        <TextBlock
+                            <TextBlock
                         Foreground="{DynamicResource PrimaryTextColor}"
                         Text="Enter" FontFamily="Poppins"/>
-                    </Button>
+                        </Button>
+                    </StackPanel>
                 </Grid>
             </StackPanel>
             <StackPanel Grid.Column="2">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
-                        <RowDefinition/>
+                        <RowDefinition Height="350"/>
                     </Grid.RowDefinitions>
                     <TextBlock Text="User Skin" Grid.Row="0" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <ListView Grid.Row="1" Width="350" Height="350">
+                        <material:Card
+                            Background="Transparent"
+                            Width="340"
+                            Height="150"
+                            material:ShadowAssist.ShadowDepth="Depth3">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="150"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="/Resources/defaultSkin.png" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="0" HorizontalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center">
+                                    <TextBlock Text="Name" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20"/>
+                                    <TextBlock Text="Price" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20"/>
+                                    <TextBlock Text="Type" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20"/>
+                                </StackPanel>
+                            </Grid>
+                        </material:Card>
+                    </ListView>
                 </Grid>
             </StackPanel>
         </Grid>
