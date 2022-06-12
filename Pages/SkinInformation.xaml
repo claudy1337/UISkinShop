@@ -81,11 +81,27 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="Skin Name" Grid.Row="0" FontSize="40" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"
                    VerticalAlignment="Center"/>
-                    <Image Source="/Resources/defaultSkin.png" Grid.Row="1" Width="400" Height="250" RenderOptions.BitmapScalingMode="HighQuality">
-                        <hc:Magnifier.Instance>
-                            <hc:Magnifier Scale="5" HorizontalOffset="-10" VerticalOffset="10"/>
-                        </hc:Magnifier.Instance>
-                    </Image>
+                    <StackPanel Grid.Row="1" Orientation="Vertical">
+                        <Image Source="/Resources/defaultSkin.png" Grid.Row="1" Width="400" Height="250" RenderOptions.BitmapScalingMode="HighQuality">
+                            <hc:Magnifier.Instance>
+                                <hc:Magnifier Scale="5" HorizontalOffset="-10" VerticalOffset="10"/>
+                            </hc:Magnifier.Instance>
+                        </Image>
+                        <Button
+                        Grid.Row="1"
+                 Margin="0,20,0,0"
+                 Width="150"
+                 Height="40"
+                 Background="#772250"
+                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                 material:ButtonAssist.CornerRadius="5"
+                 ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            <TextBlock
+                        Foreground="{DynamicResource PrimaryTextColor}"
+                        Text="Full Information" FontFamily="Poppins"/>
+                        </Button>
+                    </StackPanel>
                 </Grid>
             </StackPanel>
         </Grid>
