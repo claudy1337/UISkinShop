@@ -7,28 +7,30 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Dashboard"
-      FontFamily="Poppins">
+      FontFamily="Poppins"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
         <StackPanel>
             <Button Click="Button_Click"/>
+            <TextBox Width="200"
+                MaxLength="105"
+                MaxWidth="200"
+                Margin="0,20,0,0"
+                x:Name="skinname"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Background="{DynamicResource PrimaryTextColor}"
+                material:HintAssist.Hint="Name"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBox Width="500" Grid.Column="0" Height="500" x:Name="test" Foreground="White"/>
-                <ListView x:Name="aboba" Width="279" Grid.Column="1">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding market_hash_name}" Background="White" Foreground="White"/>
+                <TextBox Grid.Column="0" Height="500" x:Name="test" Foreground="White" Margin="0,0,10,0" TextWrapping="Wrap"/>
+                <Image x:Name="img" Grid.Column="1"/>
 
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-
-                </ListView>
             </Grid>
 
-            </StackPanel>
+        </StackPanel>
     </Border>
 </Page>

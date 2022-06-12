@@ -107,6 +107,7 @@
     <Compile Include="Controls\UserProfileImage.xaml.cs">
       <DependentUpon>UserProfileImage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Classes\SkinCertain.cs" />
     <Compile Include="Data\Classes\Skins.cs" />
     <Compile Include="Data\Classes\SkinShortly.cs" />
     <Compile Include="Pages\BalanceRefill.xaml.cs">

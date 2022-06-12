@@ -21,6 +21,7 @@ namespace WPFModernVerticalMenu.Data.Classes
             public string market_hash_name { get; set; }
             public string volume { get; set; }
             public string price { get; set; }
+            public string icon { get; set; }
         }
     }
 }

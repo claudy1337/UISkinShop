@@ -183,9 +183,6 @@ namespace WPFModernVerticalMenu
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
         }
-        // End: MenuLeft PopupButton //
-
-        // Start: Button Close | Restore | Minimize 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -203,7 +200,6 @@ namespace WPFModernVerticalMenu
         {
             WindowState = WindowState.Minimized;
         }
-        // End: Button Close | Restore | Minimize
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
@@ -213,6 +209,12 @@ namespace WPFModernVerticalMenu
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
             fContainer.Navigate(new System.Uri("Pages/SkinInformation.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void home_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }
