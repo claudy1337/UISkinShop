@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:WPFModernVerticalMenu.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Dashboard">
+      Title="Dashboard"
+      FontFamily="Poppins">
 
     <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
         <StackPanel>

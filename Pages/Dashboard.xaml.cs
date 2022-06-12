@@ -34,10 +34,10 @@ namespace WPFModernVerticalMenu.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string urlPrice = "https://market.csgo.com/api/v2/prices/RUB.json";
+            //string urlPrice = "https://market.csgo.com/api/v2/prices/RUB.json";
 
 
-            // string urlPrice = "http://csgobackpack.net/api/GetItemsList/v2/";
+            string urlPrice = "http://csgobackpack.net/api/GetItemsList/v2/";
             //string informationUrl = "http://csgobackpack.net/api/GetItemPrice/?currency=USD&id=NAME&time=7&icon=1";
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlPrice);
@@ -49,11 +49,11 @@ namespace WPFModernVerticalMenu.Pages
 
             dynamic data = JsonConvert.DeserializeObject(sReadData);
             test.Text = data.ToString();
-            var skin = JsonConvert.DeserializeObject<SkinShortly.Rootobject>(test.Text);
-            foreach (var item in skin.items)
-            {
-                aboba.ItemsSource = item.ToString();
-            }
+            //var skin = JsonConvert.DeserializeObject<SkinShortly.Rootobject>(test.Text);
+            //foreach (var item in skin.items)
+            //{
+            //    aboba.ItemsSource = item.ToString();
+            //}
         }
     }
 }

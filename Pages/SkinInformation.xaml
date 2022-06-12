@@ -71,7 +71,6 @@
                         Text="Buy" FontFamily="Poppins"/>
                         </Button>
                     </StackPanel>
-
                 </Grid>
             </StackPanel>
             <StackPanel Grid.Column="0">

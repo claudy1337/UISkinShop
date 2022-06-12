@@ -109,11 +109,20 @@
     </Compile>
     <Compile Include="Data\Classes\Skins.cs" />
     <Compile Include="Data\Classes\SkinShortly.cs" />
+    <Compile Include="Pages\BalanceRefill.xaml.cs">
+      <DependentUpon>BalanceRefill.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ClientControl.xaml.cs">
       <DependentUpon>ClientControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ClientOrder.xaml.cs">
       <DependentUpon>ClientOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClientSkinMarket.xaml.cs">
+      <DependentUpon>ClientSkinMarket.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HistoryPage.xaml.cs">
+      <DependentUpon>HistoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Market.xaml.cs">
       <DependentUpon>Market.xaml</DependentUpon>
@@ -165,6 +174,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\BalanceRefill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ClientControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,7 +186,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ClientSkinMarket.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
