@@ -26,7 +26,7 @@
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Search"/>
             </StackPanel>
-            <DataGrid Grid.Row="1"  x:Name="DGEmployee" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="DGEmployee_SelectionChanged">
+            <DataGrid Grid.Row="1" Style="{DynamicResource MaterialDesignDataGrid}"  x:Name="DGEmployee" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
                 <DataGrid.Columns >
                     <DataGridTextColumn Header="Login" />
                     <DataGridTextColumn Header="Date" />

@@ -19,7 +19,8 @@
                 <ColumnDefinition Width="400"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Image Source="/Resources/user.png" Width="250" Height="250" RenderOptions.BitmapScalingMode="HighQuality"/>
+                <Image Source="/Resources/Prouser.jpg" Width="250" Height="250" RenderOptions.BitmapScalingMode="HighQuality"/>
+                
                 <TextBlock Text="Login" FontSize="40" Margin="0,20,0,0" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </StackPanel>
@@ -63,17 +64,6 @@
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Email or Phone"/>
-                        <DatePicker
-                    Width="200"
-                    DisplayDateEnd="1.07.2006"
-                    DisplayDateStart="1.07.1940"
-                    DisplayDate="12.06.1999"
-                    Margin="0,20,0,0"
-                    Style="{StaticResource MaterialDesignOutlinedDatePicker}"
-                    material:ButtonAssist.CornerRadius="5"
-                    material:HintAssist.Hint="Birth Day"
-                    Background="{DynamicResource PrimaryTextColor}" />
-
                         <Button
                  Margin="0,20,0,0"
                  Width="200"

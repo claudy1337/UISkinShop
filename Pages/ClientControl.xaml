@@ -32,6 +32,7 @@
                     <TextBlock Text="User Information" Grid.Row="0" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        
                         <TextBox Width="200"
                 MaxLength="35"
                 MaxWidth="200"
@@ -48,16 +49,6 @@
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Email or Phone"/>
                         
-                        <DatePicker
-                    Width="200"
-                    DisplayDateEnd="1.07.2006"
-                    DisplayDateStart="1.07.1940"
-                    DisplayDate="12.06.1999"
-                    Margin="0,20,0,0"
-                    Style="{StaticResource MaterialDesignOutlinedDatePicker}"
-                    material:ButtonAssist.CornerRadius="5"
-                    material:HintAssist.Hint="Birth Day"
-                    Background="{DynamicResource PrimaryTextColor}" />
                     </StackPanel>
 
                     <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">

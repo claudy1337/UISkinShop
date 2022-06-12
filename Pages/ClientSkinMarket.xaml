@@ -86,7 +86,7 @@
                                 <TextBlock Text="Price" FontWeight="Medium" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}"/>
                                 <TextBlock Text="User Login" FontWeight="Medium" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}"/>
                             </StackPanel>
-                            <Image Source="/Resources/defaultSkin.png" Width="380" Height="250"/>
+                            <Image Source="/Resources/defaultSkin.png" Width="380" Height="250" RenderOptions.BitmapScalingMode="HighQuality"/>
                         </Grid>
                     </ListView>
                 </Grid>

@@ -24,7 +24,7 @@
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Login"/>
+                material:HintAssist.Hint="Name"/>
                 
                 <TextBox Width="200"
                 MaxWidth="200"
