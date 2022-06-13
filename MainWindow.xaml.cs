@@ -130,12 +130,13 @@ namespace WPFModernVerticalMenu
 
         private void btnClientOrder_MouseLeave(object sender, MouseEventArgs e)
         {
-
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
         }
 
         private void btnClientOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            fContainer.Navigate(new System.Uri("Pages/ClientOrder.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnClienBalance_MouseEnter(object sender, MouseEventArgs e)
@@ -151,12 +152,13 @@ namespace WPFModernVerticalMenu
 
         private void btnClienBalance_MouseLeave(object sender, MouseEventArgs e)
         {
-
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
         }
 
         private void btnClienBalance_Click(object sender, RoutedEventArgs e)
         {
-
+            fContainer.Navigate(new System.Uri("Pages/BalanceRefill.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnClienControl_MouseEnter(object sender, MouseEventArgs e)
@@ -172,12 +174,13 @@ namespace WPFModernVerticalMenu
 
         private void btnClienControl_MouseLeave(object sender, MouseEventArgs e)
         {
-
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
         }
 
         private void btnClienControl_Click(object sender, RoutedEventArgs e)
         {
-
+            fContainer.Navigate(new System.Uri("Pages/ClientControl.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnHistory_MouseEnter(object sender, MouseEventArgs e)
@@ -193,12 +196,13 @@ namespace WPFModernVerticalMenu
 
         private void btnHistory_MouseLeave(object sender, MouseEventArgs e)
         {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
 
         }
-
         private void btnHistory_Click(object sender, RoutedEventArgs e)
         {
-
+            fContainer.Navigate(new System.Uri("Pages/HistoryPage.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
