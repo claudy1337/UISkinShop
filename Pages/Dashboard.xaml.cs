@@ -50,6 +50,7 @@ namespace WPFModernVerticalMenu.Pages
             dynamic data = JsonConvert.DeserializeObject(sReadData);
             test.Text = data.ToString();
             var skin = JsonConvert.DeserializeObject<SkinCertain.Rootobject>(test.Text);
+
             img.Source = new BitmapImage(new Uri(skin.icon, UriKind.RelativeOrAbsolute));
             //foreach (var item in skin.icon)
             //{

@@ -31,14 +31,16 @@
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Type"/>
+                material:HintAssist.Hint="Medium Price"
+                x:Name="AveragePrice"/>
                         <TextBox Width="200"
                 MaxLength="35"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Rarity"/>
+                material:HintAssist.Hint="Low Price"
+                x:Name="LowestPrice"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1">
@@ -49,14 +51,14 @@
                             </Grid.ColumnDefinitions>
                             <Image Source="/Resources/logoCS.png" Grid.Column="0" Width="150" Height="140" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center" Width="200" HorizontalAlignment="Center">
-                                <TextBlock Foreground="{DynamicResource PrimaryTextColor}" Text="CSGO-BackPack" HorizontalAlignment="Center" FontSize="20"/>
-                                <TextBlock Foreground="{DynamicResource PrimaryTextColor}" Text="Shop" HorizontalAlignment="Center" FontSize="20"/>
+                                <TextBlock Foreground="{DynamicResource PrimaryTextColor}" x:Name="ClientName" Text="CSGO-BackPack" HorizontalAlignment="Center" FontSize="20"/>
+                                <TextBlock Foreground="{DynamicResource PrimaryTextColor}" x:Name="ClientLogin" Text="Shop" HorizontalAlignment="Center" FontSize="20"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock Text="1223412" FontSize="20" Foreground="{DynamicResource PrimaryTextColor}" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="skinPrice" FontSize="20" Foreground="{DynamicResource PrimaryTextColor}" VerticalAlignment="Center"/>
                         <Button
                  Margin="25,0,0,0"
                  Width="150"
@@ -79,28 +81,18 @@
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="350"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Skin Name" Grid.Row="0" FontSize="40" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"
+                    <TextBlock Text="Skin Name" x:Name="skinName" Grid.Row="0" FontSize="20" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"
+                   TextWrapping="Wrap"
+                   MaxHeight="90"
+                   MaxWidth="350"
                    VerticalAlignment="Center"/>
                     <StackPanel Grid.Row="1" Orientation="Vertical">
-                        <Image Source="/Resources/defaultSkin.png" Grid.Row="1" Width="400" Height="250" RenderOptions.BitmapScalingMode="HighQuality">
+                        <Image Source="/Resources/defaultSkin.png" x:Name="imgSkin" Grid.Row="1" Width="400" Height="350" RenderOptions.BitmapScalingMode="HighQuality">
                             <hc:Magnifier.Instance>
                                 <hc:Magnifier Scale="5" HorizontalOffset="-10" VerticalOffset="10"/>
                             </hc:Magnifier.Instance>
                         </Image>
-                        <Button
-                        Grid.Row="1"
-                 Margin="0,20,0,0"
-                 Width="150"
-                 Height="40"
-                 Background="#772250"
-                 Style="{StaticResource MaterialDesignRaisedLightButton}"
-                 material:ButtonAssist.CornerRadius="5"
-                 ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                            <TextBlock
-                        Foreground="{DynamicResource PrimaryTextColor}"
-                        Text="Full Information" FontFamily="Poppins"/>
-                        </Button>
+                        
                     </StackPanel>
                 </Grid>
             </StackPanel>

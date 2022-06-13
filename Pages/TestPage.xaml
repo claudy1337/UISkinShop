@@ -1,0 +1,49 @@
+﻿<Page x:Class="WPFModernVerticalMenu.Pages.TestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFModernVerticalMenu.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TestPage"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
+        <StackPanel Orientation="Horizontal">
+            <ListView x:Name="aboba">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <material:Card
+               Height="100"
+               Width="300"
+              material:ShadowAssist.ShadowDepth="Depth4"
+               Background="Transparent">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding market_hash_name}" Foreground="White"/>
+                                    <TextBlock Text="{Binding price}" Foreground="White"/>
+                                </StackPanel>
+                            </Grid>
+                        </material:Card>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView x:Name="img">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding icon}" Width="200" Height="100"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+
+            </ListView>
+        </StackPanel>
+        
+        
+    </Border>
+</Page>
