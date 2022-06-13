@@ -8,5 +8,12 @@ namespace WPFModernVerticalMenu.Data.Classes
 {
     public class Client
     {
+        public Client(string login, string name)
+        {
+            Login = login;
+            Name = name;
+        }
+        public string Name { get; set; } 
+        public string Login { get; set; } 
     }
 }

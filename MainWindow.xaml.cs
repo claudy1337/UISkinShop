@@ -21,8 +21,10 @@ namespace WPFModernVerticalMenu
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public static Data.Classes.Client Client;
+        public MainWindow(Data.Classes.Client client)
         {
+            Client = client;
             InitializeComponent();
         }
 
