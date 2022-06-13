@@ -31,7 +31,7 @@ namespace WPFModernVerticalMenu.Pages
         {
             InitializeComponent();
             GetListSkin();
-            searchcm
+            
         }
         public void GetListSkin()
         {

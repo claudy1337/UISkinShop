@@ -74,19 +74,27 @@
                         Text="Searh" FontFamily="Poppins"/>
                         </Button>
                     </StackPanel>
-                    <ListView Grid.Row="1" Grid.Column="1" Width="600" Height="365">
+                    <ListView Grid.Row="1" Grid.Column="1" Width="590" Height="360">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="380"/>
                                 <ColumnDefinition Width="190"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-                                <TextBlock Text="Name"  FontWeight="Medium" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}"/>
                                 <TextBlock Text="Type"  FontWeight="Medium" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}"/>
                                 <TextBlock Text="Price" FontWeight="Medium" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}"/>
                                 <TextBlock Text="User Login" FontWeight="Medium" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}"/>
                             </StackPanel>
-                            <Image Source="/Resources/defaultSkin.png" Width="380" Height="250" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <StackPanel Grid.Column="0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="/Resources/defaultSkin.png" Width="380" Height="250" RenderOptions.BitmapScalingMode="HighQuality" Grid.Row="0"/>
+                                    <TextBlock Text="Name"  FontWeight="Medium" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}" Grid.Row="1"/>
+                                </Grid>
+                            </StackPanel>
                         </Grid>
                     </ListView>
                 </Grid>
