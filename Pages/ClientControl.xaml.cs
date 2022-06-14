@@ -23,8 +23,10 @@ namespace WPFModernVerticalMenu.Pages
     /// </summary>
     public partial class ClientControl : Page
     {
-        public ClientControl()
+        public static Data.Classes.Client Clients;
+        public ClientControl(Data.Classes.Client client)
         {
+            Clients = client;
             InitializeComponent();
             Refresh();
         }
@@ -37,6 +39,7 @@ namespace WPFModernVerticalMenu.Pages
                     txtClientName.Text = client.ClientInformation.Name;
                     txtBlance.Text = client.ClientInformation.Balance.ToString();
                     txtClientLink.Text = client.ClientInformation.Link;
+                    listSkin.ItemsSource = BD_Connection.bd.Skin.Where(s=>s.Client.idClient == client.idClient && s.Client.IdRole == 2).ToList();
             }
             catch (System.NullReferenceException)
             {
@@ -67,7 +70,14 @@ namespace WPFModernVerticalMenu.Pages
             txtBlance.Text = null;
             txtClientName.Text = null;
             ClientList.ItemsSource = null;
-            ClientList.ItemsSource = Data.Classes.BD_Connection.bd.Client.ToList();
+            ClientList.ItemsSource = Data.Classes.BD_Connection.bd.Client.Where(c=>c.IdRole == 2).ToList();
+        }
+
+        private void listSkin_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var skin = listSkin.SelectedItem as Data.Model.Skin;
+            SkinGet skinGet = new SkinGet(skin.Name,skin.Price,skin.Client.ClientInformation.Login, skin.Client.ClientInformation.Name, null, skin.ImageUrl, skin.Currency);
+            NavigationService.Navigate(new SkinInformation(skinGet, Clients));
         }
     }
 }

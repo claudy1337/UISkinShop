@@ -118,7 +118,7 @@ namespace WPFModernVerticalMenu
 
         private void btnClienMarket_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/ClientSkinMarket.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new Pages.ClientSkinMarket(Client));
         }
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
@@ -193,7 +193,7 @@ namespace WPFModernVerticalMenu
 
         private void btnClienControl_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/ClientControl.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new Pages.ClientControl(Client));
         }
 
         private void btnHistory_MouseEnter(object sender, MouseEventArgs e)

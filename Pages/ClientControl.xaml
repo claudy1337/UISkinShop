@@ -88,8 +88,10 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="User Skin" Grid.Row="0" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <ListView Grid.Row="1" Width="350" Height="350">
-                        <material:Card
+                    <ListView Grid.Row="1" Width="350" Height="350" x:Name="listSkin" SelectionChanged="listSkin_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <material:Card
                             Background="Transparent"
                             Width="340"
                             Height="150"
@@ -99,15 +101,16 @@
                                     <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="150"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="/Resources/defaultSkin.png" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="0" HorizontalAlignment="Center"/>
-                                <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center">
-                                    <TextBlock Text="Name" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20"/>
-                                    <TextBlock Text="Price" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20"/>
-                                    <TextBlock Text="Type" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20"/>
-                                    <TextBlock Text="Rarity" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20"/>
+                                <Image Source="{Binding ImageUrl}" RenderOptions.BitmapScalingMode="HighQuality" Width="210" Height="150" Grid.Column="0" HorizontalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="110">
+                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20" Height="110"/>
+                                    <TextBlock Text="{Binding Price}" Margin="0,20,0,0" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20"/>
+                                    
                                 </StackPanel>
                             </Grid>
                         </material:Card>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
             </StackPanel>

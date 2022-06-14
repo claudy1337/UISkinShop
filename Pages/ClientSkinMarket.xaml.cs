@@ -20,9 +20,12 @@ namespace WPFModernVerticalMenu.Pages
     /// </summary>
     public partial class ClientSkinMarket : Page
     {
-        public ClientSkinMarket()
+        public static Data.Classes.Client Clients;
+        public ClientSkinMarket(Data.Classes.Client client)
         {
+            Clients = client;
             InitializeComponent();
+            listSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.Where(s => s.Status == true && s.Client.ClientInformation.Login !=Clients.Login).ToList();
         }
     }
 }
