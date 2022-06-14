@@ -217,5 +217,29 @@ namespace WPFModernVerticalMenu
         {
             fContainer.Navigate(new Pages.HistoryPage(Client));
         }
+
+        private void btnExit_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnExit;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = "Exit";
+            }
+        }
+
+        private void btnExit_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Auth auth = new Auth();
+            auth.Show();
+            this.Close();
+        }
     }
 }

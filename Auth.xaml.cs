@@ -42,18 +42,25 @@ namespace WPFModernVerticalMenu
 
         private void BtnAuthAccount_Click(object sender, RoutedEventArgs e)
         {
-            Data.Model.Client client = Data.Classes.BD_Connection.bd.Client.FirstOrDefault(c=>c.ClientInformation.Login == TxtClienLogin.Text && c.ClientInformation.Password == TxtClientPassword.Password);
-            if (string.IsNullOrWhiteSpace(TxtClienLogin.Text) & string.IsNullOrWhiteSpace(TxtClientPassword.Password) || client == null)
+            try
             {
-                MessageBox.Show("incorrect");
+                Data.Model.Client client = Data.Classes.BD_Connection.bd.Client.FirstOrDefault(c => c.ClientInformation.Login == TxtClienLogin.Text && c.ClientInformation.Password == TxtClientPassword.Password);
+                if (string.IsNullOrWhiteSpace(TxtClienLogin.Text) & string.IsNullOrWhiteSpace(TxtClientPassword.Password) || client == null)
+                {
+                    MessageBox.Show("incorrect");
+                }
+                else if (client != null)
+                {
+                    Data.Classes.Client clientSet = new Data.Classes.Client(client.ClientInformation.Login, client.ClientInformation.Name, Convert.ToInt32(client.IdRole), client.ClientInformation.Balance.ToString(), client.ClientInformation.Link, client.idClient);
+                    MessageBox.Show("welcome " + client.ClientInformation.Name);
+                    MainWindow main = new MainWindow(clientSet);
+                    main.Show();
+                    this.Close();
+                }
             }
-            else if (client != null)
+            catch(Exception)
             {
-                Data.Classes.Client clientSet = new Data.Classes.Client(client.ClientInformation.Login, client.ClientInformation.Name, Convert.ToInt32(client.IdRole), client.ClientInformation.Balance.ToString(), client.ClientInformation.Link, client.idClient);
-                MessageBox.Show("welcome " + client.ClientInformation.Name);
-                MainWindow main = new MainWindow(clientSet);
-                main.Show();
-                this.Close();
+                return;
             }
         }
         public void OnPasteCommand(object sender, ExecutedRoutedEventArgs e)

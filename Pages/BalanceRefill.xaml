@@ -35,7 +35,7 @@
                 MaxWidth="200"
                 Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Password"/>
+                material:HintAssist.Hint="Password" PreviewStylusUp="password"/>
                 <Button
                  x:Name="BalanceRefil"
                  Click="BalanceRefil_Click"

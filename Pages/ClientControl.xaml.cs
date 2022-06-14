@@ -28,6 +28,8 @@ namespace WPFModernVerticalMenu.Pages
         {
             Clients = client;
             InitializeComponent();
+            txtClientName.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
+            txtClientLink.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
             Refresh();
         }
 
@@ -78,6 +80,10 @@ namespace WPFModernVerticalMenu.Pages
             var skin = listSkin.SelectedItem as Data.Model.Skin;
             SkinGet skinGet = new SkinGet(skin.Name,skin.Price,skin.Client.ClientInformation.Login, skin.Client.ClientInformation.Name, null, skin.ImageUrl, skin.Currency);
             NavigationService.Navigate(new SkinInformation(skinGet, Clients));
+        }
+        public void OnPasteCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+
         }
     }
 }

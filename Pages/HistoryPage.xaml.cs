@@ -25,6 +25,7 @@ namespace WPFModernVerticalMenu.Pages
         {
             Client = client;
             InitializeComponent();
+            TxtSearch.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
             if (client.Role == 1 || client.Role == 3) DGHistory.ItemsSource = Data.Classes.BD_Connection.bd.Operation.ToList();
                 
             else
@@ -36,7 +37,10 @@ namespace WPFModernVerticalMenu.Pages
             } 
 
         }
+        public void OnPasteCommand(object sender, ExecutedRoutedEventArgs e)
+        {
 
+        }
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
             try

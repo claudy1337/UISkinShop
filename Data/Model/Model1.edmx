@@ -22,7 +22,6 @@
           <Property Name="Login" Type="nvarchar(max)" />
           <Property Name="Password" Type="nvarchar(max)" />
           <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="idOrder" Type="int" />
           <Property Name="Link" Type="nvarchar(max)" />
           <Property Name="Image" Type="image" />
         </EntityType>
@@ -162,7 +161,6 @@
           <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="idOrder" Type="Int32" />
           <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_ClientInformation" FromRole="ClientInformation" ToRole="Client" />
@@ -306,7 +304,6 @@
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
-                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
                 <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>

@@ -25,7 +25,6 @@ namespace WPFModernVerticalMenu.Data.Model
         public string Login { get; set; }
         public string Password { get; set; }
         public Nullable<decimal> Balance { get; set; }
-        public Nullable<int> idOrder { get; set; }
         public string Link { get; set; }
         public byte[] Image { get; set; }
     

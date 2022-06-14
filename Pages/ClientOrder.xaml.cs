@@ -28,6 +28,10 @@ namespace WPFModernVerticalMenu.Pages
         {
             Clients = client;
             InitializeComponent();
+            txtDate.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
+            txtMaxPrice.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
+            txtMinPrice.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
+            txtPrice.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
             ListSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.ToList().Where(s=>s.idClient == Clients.Id);
         }
 
@@ -46,33 +50,40 @@ namespace WPFModernVerticalMenu.Pages
 
         private void BtnSell_Click(object sender, RoutedEventArgs e)
         {
-            double minPrice = double.Parse(txtMinPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
-            double maxPrice = double.Parse(txtMaxPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
-            double Price = double.Parse(txtPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
-            var skin = ListSkin.SelectedItem as Data.Model.Skin;
-            Data.Model.Operation operation = new Data.Model.Operation
+            try
             {
-                idSkin = skin.idSkin,
-                Date = DateTime.Now.Date,
-                TypeOperation = "sell skin"
-            };
-            Data.Model.Skin Sellskins = Data.Classes.BD_Connection.bd.Skin.FirstOrDefault(s => s.idSkin == skin.idSkin && s.idClient == Clients.Id);
-            if (Sellskins != null && minPrice <= Price && Price <= maxPrice && Sellskins.Status == false)
-            {
-                Sellskins.Status = true;
-                Sellskins.Price = txtPrice.Text;
+                double minPrice = double.Parse(txtMinPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
+                double maxPrice = double.Parse(txtMaxPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
+                double Price = double.Parse(txtPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
+                var skin = ListSkin.SelectedItem as Data.Model.Skin;
+                Data.Model.Operation operation = new Data.Model.Operation
+                {
+                    idSkin = skin.idSkin,
+                    Date = DateTime.Now.Date,
+                    TypeOperation = "sell skin"
+                };
+                Data.Model.Skin Sellskins = Data.Classes.BD_Connection.bd.Skin.FirstOrDefault(s => s.idSkin == skin.idSkin && s.idClient == Clients.Id);
+                if (Sellskins != null && minPrice <= Price && Price <= maxPrice && Sellskins.Status == false)
+                {
+                    Sellskins.Status = true;
+                    Sellskins.Price = txtPrice.Text;
 
+                }
+                else
+                {
+                    MessageBox.Show("error");
+                    return;
+                }
+                txtStatusSell.Text = "Sell";
+                BD_Connection.bd.Operation.Add(operation);
+                BD_Connection.bd.SaveChanges();
+                MessageBox.Show("skin sell waiting buying");
+                Refresh();
             }
-            else
+            catch(Exception)
             {
-                MessageBox.Show("error");
                 return;
             }
-            txtStatusSell.Text = "Sell";
-            BD_Connection.bd.Operation.Add(operation);
-            BD_Connection.bd.SaveChanges();
-            MessageBox.Show("skin sell waiting buying");
-            Refresh();
         }
         public void Refresh()
         {
@@ -89,6 +100,10 @@ namespace WPFModernVerticalMenu.Pages
             }
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+        public void OnPasteCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -28,6 +28,8 @@ namespace WPFModernVerticalMenu.Pages
         {
             InitializeComponent();
             Client = client;
+            txtSummAccount.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
+            txtPassword.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
             var clients = BD_Connection.bd.Client.Where(c=>c.ClientInformation.Login == Client.Login).FirstOrDefault();
             txtClientName.Text = clients.ClientInformation.Name;
             txtBalance.Text = clients.ClientInformation.Balance.ToString();
@@ -79,6 +81,13 @@ namespace WPFModernVerticalMenu.Pages
             var client = Data.Classes.BD_Connection.bd.Client.Where(c => c.ClientInformation.Login == Client.Login).FirstOrDefault();
             txtBalance.Text = client.ClientInformation.Balance.ToString();
         }
+        public void OnPasteCommand(object sender, ExecutedRoutedEventArgs e)
+        {
 
+        }
+        private void password(object sender, StylusEventArgs e)
+        {
+
+        }
     }
 }

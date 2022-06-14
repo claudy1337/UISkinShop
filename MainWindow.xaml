@@ -73,7 +73,9 @@
                         <Button x:Name="btnClienControl" Style="{DynamicResource PopupButtonStyle}" MouseEnter="btnClienControl_MouseEnter" MouseLeave="btnClienControl_MouseLeave" Click="btnClienControl_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource clientControl}" IconWidth="20" Text="Client Control" VerticalAlignment="Center"/>
                         </Button>
-                        
+                        <Button x:Name="btnExit" Margin="0,130,0,0" Style="{DynamicResource PopupButtonStyle}" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" Click="btnExit_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource exit}" IconWidth="20" Text="Client Control" VerticalAlignment="Center"/>
+                        </Button>
                     </StackPanel>
                     
                     <Popup x:Name="Popup"  AllowsTransparency="True"  HorizontalOffset="0" VerticalOffset="10">

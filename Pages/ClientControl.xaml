@@ -54,7 +54,7 @@
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Email or Phone"/>
+                material:HintAssist.Hint="Email or Phone" Cursor="Arrow"/>
                         
                     </StackPanel>
 
