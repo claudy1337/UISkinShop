@@ -88,15 +88,22 @@ namespace WPFModernVerticalMenu.Pages
                         Date = DateTime.Now.Date,
                         TypeOperation = "buy skin"
                     };
+                    var clientBalance = Data.Classes.BD_Connection.bd.Client.Where(c=>c.ClientInformation.Login == Clients.Login).FirstOrDefault();
+                    var client = Data.Classes.BD_Connection.bd.Client.Where(c => c.ClientInformation.Login == SkinGets.ClientLogin).FirstOrDefault();
+                    if (client != null && clientBalance != null)
+                    {
+                        client.ClientInformation.Balance += Convert.ToDecimal(skinPrice.Text);
+                        clientBalance.ClientInformation.Balance -=  Convert.ToDecimal(skinPrice.Text);
+                    }
                     BD_Connection.bd.Skin.Add(skin);
                     BD_Connection.bd.Operation.Add(operation);
                     BD_Connection.bd.SaveChanges();
-                    MessageBox.Show("buying " + SkinGets.Market_Name);
+                    MessageBox.Show("buying " + SkinGets.Market_Name); //старый скин удаляется
             }
             catch(Exception)
             {
                 return;
             }
-        }
+}
     }
 }

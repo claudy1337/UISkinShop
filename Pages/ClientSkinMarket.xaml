@@ -74,7 +74,7 @@
                         Text="Searh" FontFamily="Poppins"/>
                         </Button>
                     </StackPanel>
-                    <ListView Grid.Row="1" Grid.Column="1" Width="590" Height="360" x:Name="listSkin">
+                    <ListView Grid.Row="1" Grid.Column="1" Width="590" Height="360" x:Name="listSkin" SelectionChanged="listSkin_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 

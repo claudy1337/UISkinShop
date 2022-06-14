@@ -63,7 +63,7 @@
                  Margin="25,0,0,0"
                  Width="150"
                  x:Name="BtnSkinBuy"
-                Click="BtnSkinBuy_Click"
+                 Click="BtnSkinBuy_Click"
                  Height="40"
                  Background="#772250"
                  Style="{StaticResource MaterialDesignRaisedLightButton}"
