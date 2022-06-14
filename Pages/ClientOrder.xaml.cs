@@ -32,7 +32,7 @@ namespace WPFModernVerticalMenu.Pages
             txtMaxPrice.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
             txtMinPrice.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
             txtPrice.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
-            ListSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.ToList().Where(s=>s.idClient == Clients.Id);
+            ListSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.ToList().Where(s=>s.idClient == Clients.Id && s.SkinSold == false);
         }
 
         private void ListSkin_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -67,7 +67,6 @@ namespace WPFModernVerticalMenu.Pages
                 {
                     Sellskins.Status = true;
                     Sellskins.Price = txtPrice.Text;
-
                 }
                 else
                 {

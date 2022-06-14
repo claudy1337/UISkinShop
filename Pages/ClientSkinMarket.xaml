@@ -17,11 +17,9 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="370"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <hc:SearchBar Command="{Binding SearchCmd}" Height="40" Width="200" MaxLength="40" Margin="0,0,40,0" Background="{DynamicResource PrimaryTextColor}" CommandParameter="{Binding Text,RelativeSource={RelativeSource Self}}" />
-            </StackPanel>
+            
             <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0">
-                <hc:RunningBlock Foreground="White" Width="350" Content="User Buy in Skin" FontSize="20"/>
+                <hc:RunningBlock  Foreground="White" Width="350" Content="Boba buy AK-47 | Case Hardened (Battle-Scarred)" FontSize="20"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1">
@@ -33,34 +31,39 @@
                     <StackPanel Grid.Column="0">
                         <TextBlock Text="Sort" HorizontalAlignment="Center" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"/>
                         <TextBox Width="200"
+                x:Name="txtPrice"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Value"/>
+                material:HintAssist.Hint="Price"/>
 
                         <TextBox Width="200"
+                x:Name="txtLowestPrice"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Value"/>
+                material:HintAssist.Hint="Lowest Price"/>
 
                         <ComboBox
+                            x:Name="CBCurrency"
                             Margin="0,20,0,0"
                             Style="{StaticResource MaterialDesignOutlinedComboBox}"
                             Background="{DynamicResource PrimaryTextColor}"
-                            material:HintAssist.Hint="Value"
+                            material:HintAssist.Hint="Currency"
                             Width="200">
                             <ComboBoxItem
-                        Content="Item 1" />
+                        Content="USD" />
                             <ComboBoxItem
-                        Content="Item 2" />
+                        Content="RUB" />
                             <ComboBoxItem
-                        Content="Item 3" />
+                        Content="EUR" />
                         </ComboBox>
 
                         <Button
+                 x:Name="BtnSearch"
+                 Click="BtnSearch_Click"
                  Margin="0,20,0,0"
                  Height="40"
                  Width="200"

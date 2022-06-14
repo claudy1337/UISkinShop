@@ -27,7 +27,7 @@ namespace WPFModernVerticalMenu.Pages
         {
             Clients = client;
             InitializeComponent();
-            listSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.Where(s => s.Status == true && s.Client.ClientInformation.Login !=Clients.Login).ToList();
+            listSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.Where(s => s.Status == true && s.Client.ClientInformation.Login !=Clients.Login && s.SkinSold == false).ToList();
         }
 
         private void listSkin_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -35,6 +35,13 @@ namespace WPFModernVerticalMenu.Pages
             var skin = listSkin.SelectedItem as Data.Model.Skin;
             SkinGet skinget = new SkinGet(skin.Name, skin.Price, skin.Client.ClientInformation.Login, skin.Client.ClientInformation.Name, null, skin.ImageUrl, skin.Currency);
             NavigationService.Navigate(new SkinInformation(skinget, Clients));
+        }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            listSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.Where(s => s.Status == true && s.Client.ClientInformation.Login != Clients.Login && s.Price == txtPrice.Text   //uglycode
+            || s.Status == true && s.Client.ClientInformation.Login != Clients.Login && s.LowestPrice == txtLowestPrice.Text).ToList();
+            
         }
     }
 }

@@ -19,7 +19,7 @@
 
             
             <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0">
-                <hc:RunningBlock Foreground="White" Width="350" x:Name="HistoryRunText" Content="User Buy in Skin" FontSize="20"/>
+                <hc:RunningBlock Foreground="White" Width="350" x:Name="HistoryRunText" Content="Boba buy AK-47 | Case Hardened (Battle-Scarred)" FontSize="20"/>
             </StackPanel>
             <StackPanel Grid.Row="1">
                 <Grid Height="370">

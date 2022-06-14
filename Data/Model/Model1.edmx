@@ -54,6 +54,7 @@
           <Property Name="Price" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="bit" />
           <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="SkinSold" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -198,6 +199,7 @@
           <NavigationProperty Name="Client" Relationship="Self.FK_Skin_Client" FromRole="Skin" ToRole="Client" />
           <NavigationProperty Name="Operation" Relationship="Self.FK_Operation_Skin" FromRole="Skin" ToRole="Operation" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SkinSold" Type="Boolean" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -330,6 +332,7 @@
           <EntitySetMapping Name="Skin">
             <EntityTypeMapping TypeName="SkinMarketModel.Skin">
               <MappingFragment StoreEntitySet="Skin">
+                <ScalarProperty Name="SkinSold" ColumnName="SkinSold" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="idSkin" ColumnName="idSkin" />
                 <ScalarProperty Name="idClient" ColumnName="idClient" />

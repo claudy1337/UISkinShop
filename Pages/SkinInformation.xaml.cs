@@ -80,7 +80,8 @@ namespace WPFModernVerticalMenu.Pages
                         Currency = SkinGets.Currency,
                         Price = SkinGets.Market_Price,
                         Status = false,
-                        Name = SkinGets.Market_Name
+                        Name = SkinGets.Market_Name,
+                        SkinSold = false
                     };
                     Data.Model.Operation operation = new Data.Model.Operation
                     {
@@ -90,9 +91,11 @@ namespace WPFModernVerticalMenu.Pages
                     };
                     var clientBalance = Data.Classes.BD_Connection.bd.Client.Where(c=>c.ClientInformation.Login == Clients.Login).FirstOrDefault();
                     var client = Data.Classes.BD_Connection.bd.Client.Where(c => c.ClientInformation.Login == SkinGets.ClientLogin).FirstOrDefault();
+                    var skinDelete = Data.Classes.BD_Connection.bd.Skin.Where(s => s.Client.ClientInformation.Login == SkinGets.ClientLogin && s.Status == true && s.SkinSold == false && s.Name == SkinGets.Market_Name && s.Price == skinPrice.Text).FirstOrDefault();
                     if (client != null)
                     {
                         client.ClientInformation.Balance += decimal.Parse(skinPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
+                        skinDelete.SkinSold = true;
                         
                     }
                     clientBalance.ClientInformation.Balance -= decimal.Parse(skinPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
