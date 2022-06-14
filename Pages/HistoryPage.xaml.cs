@@ -20,9 +20,35 @@ namespace WPFModernVerticalMenu.Pages
     /// </summary>
     public partial class HistoryPage : Page
     {
-        public HistoryPage()
+        public static Data.Classes.Client Client;
+        public HistoryPage(Data.Classes.Client client)
         {
+            Client = client;
             InitializeComponent();
+            if (client.Role == 1 || client.Role == 3) DGHistory.ItemsSource = Data.Classes.BD_Connection.bd.Operation.ToList();
+                
+            else
+            {
+                DGHistory.ItemsSource = Data.Classes.BD_Connection.bd.Operation.Where(c => c.Skin.Client.ClientInformation.Login == client.Login).ToList();
+                BtnSearch.Visibility = Visibility.Hidden;
+                TxtSearch.Visibility = Visibility.Hidden;
+
+            } 
+
+        }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DGHistory.ItemsSource = Data.Classes.BD_Connection.bd.Operation.Where(h => h.Skin.Client.ClientInformation.Login == TxtSearch.Text || h.Skin.Price == TxtSearch.Text 
+                || h.TypeOperation == TxtSearch.Text || h.Skin.Status.ToString() == TxtSearch.Text).ToList();
+                if (TxtSearch.Text == null) DGHistory.ItemsSource = Data.Classes.BD_Connection.bd.Operation.ToList();
+            }
+            catch(Exception)
+            {
+                return;
+            }
         }
     }
 }

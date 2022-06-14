@@ -54,18 +54,17 @@ namespace WPFModernVerticalMenu.Pages
             BD_Connection.bd.SaveChanges();
             MessageBox.Show("client edit"); //доработать link
         }
-
+        BitmapImage bitmapImage = new BitmapImage();
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.FilterIndex = 1;
             if (ofd.ShowDialog() == true)
             {
-                BitmapImage bitmapImage = new BitmapImage();
+                
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(ofd.FileName);
                 bitmapImage.EndInit();
-                //bitmapImg_excursion = ofd;
                 imgClient.Source = bitmapImage;
             }
         }

@@ -18,7 +18,6 @@ namespace WPFModernVerticalMenu.Data.Model
         public Skin()
         {
             this.Operation = new HashSet<Operation>();
-            this.Order = new HashSet<Order>();
         }
     
         public int idSkin { get; set; }
@@ -34,7 +33,5 @@ namespace WPFModernVerticalMenu.Data.Model
         public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Operation> Operation { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
     }
 }

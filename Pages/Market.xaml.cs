@@ -31,6 +31,7 @@ namespace WPFModernVerticalMenu.Pages
         {
             Client = client;
             InitializeComponent();
+          //  HistoryRunText.Content = 
             GetListSkin();
             
         }

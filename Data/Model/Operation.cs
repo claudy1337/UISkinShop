@@ -14,19 +14,11 @@ namespace WPFModernVerticalMenu.Data.Model
     
     public partial class Operation
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Operation()
-        {
-            this.History = new HashSet<History>();
-        }
-    
         public int idOperation { get; set; }
         public Nullable<int> idSkin { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string TypeOperation { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<History> History { get; set; }
         public virtual Skin Skin { get; set; }
     }
 }

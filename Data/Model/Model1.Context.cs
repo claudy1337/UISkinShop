@@ -27,9 +27,7 @@ namespace WPFModernVerticalMenu.Data.Model
     
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<ClientInformation> ClientInformation { get; set; }
-        public virtual DbSet<History> History { get; set; }
         public virtual DbSet<Operation> Operation { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Skin> Skin { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

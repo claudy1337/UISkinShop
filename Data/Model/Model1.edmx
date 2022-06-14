@@ -26,14 +26,6 @@
           <Property Name="Link" Type="nvarchar(max)" />
           <Property Name="Image" Type="image" />
         </EntityType>
-        <EntityType Name="History">
-          <Key>
-            <PropertyRef Name="idHistory" />
-          </Key>
-          <Property Name="idHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idClient" Type="int" />
-          <Property Name="idOperation" Type="int" />
-        </EntityType>
         <EntityType Name="Operation">
           <Key>
             <PropertyRef Name="idOperation" />
@@ -42,13 +34,6 @@
           <Property Name="idSkin" Type="int" />
           <Property Name="Date" Type="date" />
           <Property Name="TypeOperation" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="idOrder" />
-          </Key>
-          <Property Name="idOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idSkin" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -105,42 +90,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ClientInformation_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <End Role="ClientInformation" Type="Self.ClientInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="idOrder" />
-            </Principal>
-            <Dependent Role="ClientInformation">
-              <PropertyRef Name="idOrder" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_History_Client">
-          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Client">
-              <PropertyRef Name="idClient" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="idClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_History_Operation">
-          <End Role="Operation" Type="Self.Operation" Multiplicity="0..1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Operation">
-              <PropertyRef Name="idOperation" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="idOperation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Operation_Skin">
           <End Role="Skin" Type="Self.Skin" Multiplicity="0..1" />
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
@@ -149,18 +98,6 @@
               <PropertyRef Name="idSkin" />
             </Principal>
             <Dependent Role="Operation">
-              <PropertyRef Name="idSkin" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Skin">
-          <End Role="Skin" Type="Self.Skin" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Skin">
-              <PropertyRef Name="idSkin" />
-            </Principal>
-            <Dependent Role="Order">
               <PropertyRef Name="idSkin" />
             </Dependent>
           </ReferentialConstraint>
@@ -180,9 +117,7 @@
         <EntityContainer Name="Хранилище SkinMarketModelContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientInformation" EntityType="Self.ClientInformation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Operation" EntityType="Self.Operation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Skin" EntityType="Self.Skin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -194,25 +129,9 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK_ClientInformation_Order" Association="Self.FK_ClientInformation_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="ClientInformation" EntitySet="ClientInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_History_Client" Association="Self.FK_History_Client">
-            <End Role="Client" EntitySet="Client" />
-            <End Role="History" EntitySet="History" />
-          </AssociationSet>
-          <AssociationSet Name="FK_History_Operation" Association="Self.FK_History_Operation">
-            <End Role="Operation" EntitySet="Operation" />
-            <End Role="History" EntitySet="History" />
-          </AssociationSet>
           <AssociationSet Name="FK_Operation_Skin" Association="Self.FK_Operation_Skin">
             <End Role="Skin" EntitySet="Skin" />
             <End Role="Operation" EntitySet="Operation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Skin" Association="Self.FK_Order_Skin">
-            <End Role="Skin" EntitySet="Skin" />
-            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Skin_Client" Association="Self.FK_Skin_Client">
             <End Role="Client" EntitySet="Client" />
@@ -232,7 +151,6 @@
           <Property Name="idClientInformation" Type="Int32" />
           <NavigationProperty Name="ClientInformation" Relationship="Self.FK_Client_ClientInformation" FromRole="Client" ToRole="ClientInformation" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Client_Role" FromRole="Client" ToRole="Role" />
-          <NavigationProperty Name="History" Relationship="Self.FK_History_Client" FromRole="Client" ToRole="History" />
           <NavigationProperty Name="Skin" Relationship="Self.FK_Skin_Client" FromRole="Client" ToRole="Skin" />
         </EntityType>
         <EntityType Name="ClientInformation">
@@ -248,17 +166,6 @@
           <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_ClientInformation" FromRole="ClientInformation" ToRole="Client" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_ClientInformation_Order" FromRole="ClientInformation" ToRole="Order" />
-        </EntityType>
-        <EntityType Name="History">
-          <Key>
-            <PropertyRef Name="idHistory" />
-          </Key>
-          <Property Name="idHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idClient" Type="Int32" />
-          <Property Name="idOperation" Type="Int32" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_History_Client" FromRole="History" ToRole="Client" />
-          <NavigationProperty Name="Operation" Relationship="Self.FK_History_Operation" FromRole="History" ToRole="Operation" />
         </EntityType>
         <EntityType Name="Operation">
           <Key>
@@ -268,17 +175,7 @@
           <Property Name="idSkin" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="TypeOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="History" Relationship="Self.FK_History_Operation" FromRole="Operation" ToRole="History" />
           <NavigationProperty Name="Skin" Relationship="Self.FK_Operation_Skin" FromRole="Operation" ToRole="Skin" />
-        </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="idOrder" />
-          </Key>
-          <Property Name="idOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idSkin" Type="Int32" />
-          <NavigationProperty Name="ClientInformation" Relationship="Self.FK_ClientInformation_Order" FromRole="Order" ToRole="ClientInformation" />
-          <NavigationProperty Name="Skin" Relationship="Self.FK_Order_Skin" FromRole="Order" ToRole="Skin" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -302,7 +199,6 @@
           <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Skin_Client" FromRole="Skin" ToRole="Client" />
           <NavigationProperty Name="Operation" Relationship="Self.FK_Operation_Skin" FromRole="Skin" ToRole="Operation" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Skin" FromRole="Skin" ToRole="Order" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -339,18 +235,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_History_Client">
-          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Client">
-              <PropertyRef Name="idClient" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="idClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Skin_Client">
           <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
           <End Role="Skin" Type="Self.Skin" Multiplicity="*" />
@@ -360,30 +244,6 @@
             </Principal>
             <Dependent Role="Skin">
               <PropertyRef Name="idClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ClientInformation_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <End Role="ClientInformation" Type="Self.ClientInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="idOrder" />
-            </Principal>
-            <Dependent Role="ClientInformation">
-              <PropertyRef Name="idOrder" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_History_Operation">
-          <End Role="Operation" Type="Self.Operation" Multiplicity="0..1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Operation">
-              <PropertyRef Name="idOperation" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="idOperation" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -399,24 +259,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Skin">
-          <End Role="Skin" Type="Self.Skin" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Skin">
-              <PropertyRef Name="idSkin" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="idSkin" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="SkinMarketEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Client" EntityType="Self.Client" />
           <EntitySet Name="ClientInformation" EntityType="Self.ClientInformation" />
-          <EntitySet Name="History" EntityType="Self.History" />
           <EntitySet Name="Operation" EntityType="Self.Operation" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="Skin" EntityType="Self.Skin" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -428,29 +274,13 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK_History_Client" Association="Self.FK_History_Client">
-            <End Role="Client" EntitySet="Client" />
-            <End Role="History" EntitySet="History" />
-          </AssociationSet>
           <AssociationSet Name="FK_Skin_Client" Association="Self.FK_Skin_Client">
             <End Role="Client" EntitySet="Client" />
             <End Role="Skin" EntitySet="Skin" />
           </AssociationSet>
-          <AssociationSet Name="FK_ClientInformation_Order" Association="Self.FK_ClientInformation_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="ClientInformation" EntitySet="ClientInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_History_Operation" Association="Self.FK_History_Operation">
-            <End Role="Operation" EntitySet="Operation" />
-            <End Role="History" EntitySet="History" />
-          </AssociationSet>
           <AssociationSet Name="FK_Operation_Skin" Association="Self.FK_Operation_Skin">
             <End Role="Skin" EntitySet="Skin" />
             <End Role="Operation" EntitySet="Operation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Skin" Association="Self.FK_Order_Skin">
-            <End Role="Skin" EntitySet="Skin" />
-            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -482,15 +312,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="History">
-            <EntityTypeMapping TypeName="SkinMarketModel.History">
-              <MappingFragment StoreEntitySet="History">
-                <ScalarProperty Name="idHistory" ColumnName="idHistory" />
-                <ScalarProperty Name="idClient" ColumnName="idClient" />
-                <ScalarProperty Name="idOperation" ColumnName="idOperation" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Operation">
             <EntityTypeMapping TypeName="SkinMarketModel.Operation">
               <MappingFragment StoreEntitySet="Operation">
@@ -498,14 +319,6 @@
                 <ScalarProperty Name="idSkin" ColumnName="idSkin" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="TypeOperation" ColumnName="TypeOperation" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="SkinMarketModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
-                <ScalarProperty Name="idSkin" ColumnName="idSkin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

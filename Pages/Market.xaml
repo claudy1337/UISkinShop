@@ -17,11 +17,9 @@
                 <RowDefinition Height="370"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,25,0">
-                <TextBlock Text="CSGO Skin BackPack Market" FontSize="20" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"/>
-            </StackPanel>
+            
             <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0">
-                <hc:RunningBlock Foreground="White" Width="350" Content="User Buy in Skin" FontSize="20"/>
+                <hc:RunningBlock Foreground="White" Width="350" x:Name="HistoryRunText" Content="User Buy in Skin" FontSize="20"/>
             </StackPanel>
             <StackPanel Grid.Row="1">
                 <Grid Height="370">
@@ -29,51 +27,9 @@
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition Width="550"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Sort" HorizontalAlignment="Center" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"/>
-                        <TextBox Width="200"
-                MaxWidth="200"
-                Margin="0,20,0,0"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Value"/>
-
-                        <TextBox Width="200"
-                MaxWidth="200"
-                Margin="0,20,0,0"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Value"/>
-
-                        <ComboBox
-                            Margin="0,20,0,0"
-                            Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                            Background="{DynamicResource PrimaryTextColor}"
-                            material:HintAssist.Hint="Value"
-                            Width="200">
-                            <ComboBoxItem
-                        Content="Item 1" />
-                            <ComboBoxItem
-                        Content="Item 2" />
-                            <ComboBoxItem
-                        Content="Item 3" />
-                        </ComboBox>
-
-                        <Button
-                 Margin="0,20,0,0"
-                 x:Name="BtnSearch"
-                 Click="BtnSearch_Click"
-                 Height="40"
-                 Width="200"
-                 Background="#772250"
-                 Style="{StaticResource MaterialDesignRaisedLightButton}"
-                 material:ButtonAssist.CornerRadius="5"
-                 ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                            <TextBlock
-                        Foreground="{DynamicResource PrimaryTextColor}"
-                        Text="Searh" FontFamily="Poppins"/>
-                        </Button>
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+                        <Image Source="/Resources/logoCS.png" />
+                        <TextBlock Text="sBackPack Market"  FontSize="20" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold" HorizontalAlignment="Center"/>
                     </StackPanel>
                     <ListView Grid.Column="1" Height="365" Margin="0,2,0,2" x:Name="listMarket" HorizontalAlignment="Center" SelectionChanged="listMarket_SelectionChanged">
                         <ListView.ItemTemplate>

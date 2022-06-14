@@ -45,17 +45,23 @@ namespace WPFModernVerticalMenu.Pages
         }
 
         private void BtnSell_Click(object sender, RoutedEventArgs e)
-        {   
+        {
             double minPrice = double.Parse(txtMinPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
             double maxPrice = double.Parse(txtMaxPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
             double Price = double.Parse(txtPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
             var skin = ListSkin.SelectedItem as Data.Model.Skin;
-            Data.Model.Skin Sellskins = Data.Classes.BD_Connection.bd.Skin.FirstOrDefault(s=>s.idSkin == skin.idSkin && s.idClient == Clients.Id);
-            if (Sellskins != null && minPrice<=Price && Price<=maxPrice && Sellskins.Status == false )
+            Data.Model.Operation operation = new Data.Model.Operation
+            {
+                idSkin = skin.idSkin,
+                Date = DateTime.Now.Date,
+                TypeOperation = "sell skin"
+            };
+            Data.Model.Skin Sellskins = Data.Classes.BD_Connection.bd.Skin.FirstOrDefault(s => s.idSkin == skin.idSkin && s.idClient == Clients.Id);
+            if (Sellskins != null && minPrice <= Price && Price <= maxPrice && Sellskins.Status == false)
             {
                 Sellskins.Status = true;
                 Sellskins.Price = txtPrice.Text;
-                
+
             }
             else
             {
@@ -63,10 +69,10 @@ namespace WPFModernVerticalMenu.Pages
                 return;
             }
             txtStatusSell.Text = "Sell";
-            Refresh();
+            BD_Connection.bd.Operation.Add(operation);
             BD_Connection.bd.SaveChanges();
             MessageBox.Show("skin sell waiting buying");
-            
+            Refresh();
         }
         public void Refresh()
         {

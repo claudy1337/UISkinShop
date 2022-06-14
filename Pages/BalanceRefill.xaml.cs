@@ -28,8 +28,9 @@ namespace WPFModernVerticalMenu.Pages
         {
             InitializeComponent();
             Client = client;
-            txtClientName.Text = client.Name;
-            txtBalance.Text = client.Balance.ToString();
+            var clients = BD_Connection.bd.Client.Where(c=>c.ClientInformation.Login == Client.Login).FirstOrDefault();
+            txtClientName.Text = clients.ClientInformation.Name;
+            txtBalance.Text = clients.ClientInformation.Balance.ToString();
         }
 
         private void BalanceRefil_Click(object sender, RoutedEventArgs e)

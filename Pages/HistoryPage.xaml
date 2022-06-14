@@ -18,25 +18,29 @@
                 <RowDefinition Height="330"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
+            <TextBlock Text="History" Grid.Row="0" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" FontSize="20"/>
             <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <TextBox Width="200"
+                x:Name="TxtSearch" 
                 Margin="0,0,10,0"
                 MaxWidth="200"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Search"/>
             </StackPanel>
-            <DataGrid Grid.Row="1" Style="{DynamicResource MaterialDesignDataGrid}"  x:Name="DGEmployee" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
+            <DataGrid Grid.Row="1" Style="{DynamicResource MaterialDesignDataGrid}"  x:Name="DGHistory" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
                 <DataGrid.Columns >
-                    <DataGridTextColumn Header="Login" />
-                    <DataGridTextColumn Header="Date" />
-                    <DataGridTextColumn Header="Skin Name"/>
-                    <DataGridTextColumn Header="Type" />
-                    <DataGridTextColumn Header="Price" />
-                    <DataGridTextColumn Header="" />
+                    <DataGridTextColumn Header="Login" Binding="{Binding Skin.Client.ClientInformation.Login}" />
+                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" />
+                    <DataGridTextColumn Header="Skin Name" Binding="{Binding Skin.Name}"/>
+                    <DataGridTextColumn Header="Skin Price" Binding="{Binding Skin.Price}"/>
+                    <DataGridTextColumn Header="Type Operation" Binding="{Binding TypeOperation}"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Skin.Status}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button
+                 x:Name="BtnSearch"
+                 Click="BtnSearch_Click"
                  Grid.Row="2"
                  Height="50"
                  Background="#772250"

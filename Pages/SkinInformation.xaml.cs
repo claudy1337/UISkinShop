@@ -90,15 +90,16 @@ namespace WPFModernVerticalMenu.Pages
                     };
                     var clientBalance = Data.Classes.BD_Connection.bd.Client.Where(c=>c.ClientInformation.Login == Clients.Login).FirstOrDefault();
                     var client = Data.Classes.BD_Connection.bd.Client.Where(c => c.ClientInformation.Login == SkinGets.ClientLogin).FirstOrDefault();
-                    if (client != null && clientBalance != null)
+                    if (client != null)
                     {
-                        client.ClientInformation.Balance += Convert.ToDecimal(skinPrice.Text);
-                        clientBalance.ClientInformation.Balance -=  Convert.ToDecimal(skinPrice.Text);
+                        client.ClientInformation.Balance += decimal.Parse(skinPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
+                        
                     }
+                    clientBalance.ClientInformation.Balance -= decimal.Parse(skinPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
                     BD_Connection.bd.Skin.Add(skin);
                     BD_Connection.bd.Operation.Add(operation);
                     BD_Connection.bd.SaveChanges();
-                    MessageBox.Show("buying " + SkinGets.Market_Name); //старый скин удаляется
+                    MessageBox.Show("buying " + SkinGets.Market_Name);
             }
             catch(Exception)
             {

@@ -215,7 +215,7 @@ namespace WPFModernVerticalMenu
         }
         private void btnHistory_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/HistoryPage.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new Pages.HistoryPage(Client));
         }
     }
 }
