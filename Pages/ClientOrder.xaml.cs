@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFModernVerticalMenu.Data;
+using System.Text.RegularExpressions;
 using WPFModernVerticalMenu.Data.Classes;
 
 namespace WPFModernVerticalMenu.Pages
@@ -38,12 +39,50 @@ namespace WPFModernVerticalMenu.Pages
             txtMaxPrice.Text = skin.AveragePrice.ToString();
             txtMinPrice.Text = skin.LowestPrice.ToString();
             txtPrice.Text = skin.Price.ToString();
+            if (skin.Status == false)  txtStatusSell.Text = "Not Sell";
+            else if (skin.Status == true) txtStatusSell.Text = "Sell";
 
         }
 
         private void BtnSell_Click(object sender, RoutedEventArgs e)
+        {   
+            double minPrice = double.Parse(txtMinPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
+            double maxPrice = double.Parse(txtMaxPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
+            double Price = double.Parse(txtPrice.Text, System.Globalization.CultureInfo.InvariantCulture);
+            var skin = ListSkin.SelectedItem as Data.Model.Skin;
+            Data.Model.Skin Sellskins = Data.Classes.BD_Connection.bd.Skin.FirstOrDefault(s=>s.idSkin == skin.idSkin && s.idClient == Clients.Id);
+            if (Sellskins != null && minPrice<=Price && Price<=maxPrice && Sellskins.Status == false )
+            {
+                Sellskins.Status = true;
+                Sellskins.Price = txtPrice.Text;
+                
+            }
+            else
+            {
+                MessageBox.Show("error");
+                return;
+            }
+            txtStatusSell.Text = "Sell";
+            Refresh();
+            BD_Connection.bd.SaveChanges();
+            MessageBox.Show("skin sell waiting buying");
+            
+        }
+        public void Refresh()
         {
-
+            txtDate.Text = null;
+            txtMaxPrice.Text = null;
+            txtMinPrice.Text = null;
+            txtPrice.Text = null;
+        }
+        private void price(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

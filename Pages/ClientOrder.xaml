@@ -51,12 +51,14 @@
                     <TextBlock Text="Skin Information" Foreground="{DynamicResource PrimaryTextColor}" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center"/>
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
                         <TextBox Width="200"
+                         IsReadOnly="True"
                 x:Name="txtDate"
                 MaxWidth="200"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Date Buy"/>
+                material:HintAssist.Hint="Date Buy" Cursor="Arrow"/>
                         <TextBox Width="200"
+                IsReadOnly="True"
                 Margin="0,20,0,0"
                 x:Name="txtMinPrice"
                 MaxWidth="200"
@@ -64,20 +66,22 @@
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Min Price"/>
                         <TextBox Width="200"
+                IsReadOnly="True"
                 x:Name="txtMaxPrice"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Max Price"/>
+                material:HintAssist.Hint="Max Price" Cursor="Arrow"/>
                         
                         <TextBox Width="200"
+                IsReadOnly="False"
                 x:Name="txtPrice"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Price"/>
+                material:HintAssist.Hint="Price" PreviewTextInput="price"/>
                         <TextBlock Text="Not Sell" x:Name="txtStatusSell" Margin="0,10,0,0" Foreground="{DynamicResource PrimaryTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
                         <Button
                  x:Name="BtnSell"
@@ -89,7 +93,7 @@
                  Style="{StaticResource MaterialDesignRaisedLightButton}"
                  material:ButtonAssist.CornerRadius="5"
                  ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Cursor="Hand">
                             <TextBlock
                         Foreground="{DynamicResource PrimaryTextColor}"
                         Text="SELL" FontFamily="Poppins"/>
