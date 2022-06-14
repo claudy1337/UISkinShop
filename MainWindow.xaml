@@ -67,12 +67,13 @@
                         <Button x:Name="btnClienBalance" Style="{DynamicResource PopupButtonStyle}" MouseEnter="btnClienBalance_MouseEnter" MouseLeave="btnClienBalance_MouseLeave" Click="btnClienBalance_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource balance}" IconWidth="20" Text="Balance" VerticalAlignment="Center"/>
                         </Button>
-                        <Button x:Name="btnClienControl" Style="{DynamicResource PopupButtonStyle}" MouseEnter="btnClienControl_MouseEnter" MouseLeave="btnClienControl_MouseLeave" Click="btnClienControl_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource clientControl}" IconWidth="20" Text="Client Control" VerticalAlignment="Center"/>
-                        </Button>
                         <Button x:Name="btnHistory" Style="{DynamicResource PopupButtonStyle}" MouseEnter="btnHistory_MouseEnter" MouseLeave="btnHistory_MouseLeave" Click="btnHistory_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource history}" IconWidth="20" Text="History" VerticalAlignment="Center"/>
                         </Button>
+                        <Button x:Name="btnClienControl" Style="{DynamicResource PopupButtonStyle}" MouseEnter="btnClienControl_MouseEnter" MouseLeave="btnClienControl_MouseLeave" Click="btnClienControl_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource clientControl}" IconWidth="20" Text="Client Control" VerticalAlignment="Center"/>
+                        </Button>
+                        
                     </StackPanel>
                     
                     <Popup x:Name="Popup"  AllowsTransparency="True"  HorizontalOffset="0" VerticalOffset="10">

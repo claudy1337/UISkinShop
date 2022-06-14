@@ -26,9 +26,10 @@ namespace WPFModernVerticalMenu.Pages
     /// </summary>
     public partial class Market : Page
     {
-        
-        public Market()
+        public static Client Client;
+        public Market(Client client)
         {
+            Client = client;
             InitializeComponent();
             GetListSkin();
             
@@ -52,7 +53,7 @@ namespace WPFModernVerticalMenu.Pages
         {
             var skin = listMarket.SelectedItem as SkinShortly.Item;
             SkinGet skinget = new SkinGet(skin.market_hash_name, skin.price, "CSGO-BackPack");
-            NavigationService.Navigate(new SkinInformation(skinget));
+            NavigationService.Navigate(new SkinInformation(skinget, Client));
         }
 
         private void BtnSearch_Click(object sender, RoutedEventArgs e)

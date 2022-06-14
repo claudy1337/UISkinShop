@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFModernVerticalMenu.Pages;
 
 namespace WPFModernVerticalMenu
 {
@@ -26,6 +27,10 @@ namespace WPFModernVerticalMenu
         {
             Client = client;
             InitializeComponent();
+            if (Client.Role == 2)
+            {
+                btnClienControl.Visibility = Visibility.Hidden;
+            }
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -52,7 +57,7 @@ namespace WPFModernVerticalMenu
         }
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Market.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new Pages.Home(Client));
         }
         private void btnMarket_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -77,13 +82,21 @@ namespace WPFModernVerticalMenu
 
         private void home_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+            try
+            {
+                if (e.ChangedButton == MouseButton.Left)
+                    this.DragMove();
+            }
+            catch(System.InvalidOperationException)
+            {
+                return;
+            }
+           
         }
 
         private void btnMarket_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Market.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new Market(Client));
         }
 
         private void btnClienMarket_MouseEnter(object sender, MouseEventArgs e)
@@ -158,7 +171,7 @@ namespace WPFModernVerticalMenu
 
         private void btnClienBalance_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/BalanceRefill.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new Pages.BalanceRefill(Client));
         }
 
         private void btnClienControl_MouseEnter(object sender, MouseEventArgs e)

@@ -62,12 +62,14 @@
                         <Button
                  Margin="25,0,0,0"
                  Width="150"
+                 x:Name="BtnSkinBuy"
+                 Click="BtnSkinBuy_Click"
                  Height="40"
                  Background="#772250"
                  Style="{StaticResource MaterialDesignRaisedLightButton}"
                  material:ButtonAssist.CornerRadius="5"
                  ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Cursor="Hand">
                             <TextBlock
                         Foreground="{DynamicResource PrimaryTextColor}"
                         Text="Buy" FontFamily="Poppins"/>

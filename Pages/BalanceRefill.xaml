@@ -21,12 +21,15 @@
                 <TextBlock Text="Refill Balance" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBox Width="200"
+                x:Name="txtSummAccount"
                 MaxWidth="200"
                 Margin="0,20,0,0"
+                MaxLength="6"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Summ"/>
+                material:HintAssist.Hint="Summ" PreviewTextInput="summ" Cursor="Arrow"/>
                 <PasswordBox
+                x:Name="txtPassword"
                 Width="200"
                 Margin="0,20,0,0"
                 MaxWidth="200"
@@ -34,6 +37,8 @@
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Password"/>
                 <Button
+                 x:Name="BalanceRefil"
+                 Click="BalanceRefil_Click"
                  Margin="0,20,0,0"
                  Height="40"
                  Width="200"
@@ -50,8 +55,9 @@
 
             <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0">
                 <TextBlock Text="Balance:" FontSize="30" Margin="0,0,10,0" Foreground="{DynamicResource PrimaryTextColor}"/>
-                <TextBlock Text="14" FontSize="30" Margin="10,0,10,0" Foreground="{DynamicResource PrimaryTextColor}"/>
+                <TextBlock Text="0" x:Name="txtBalance" FontSize="30" Margin="10,0,10,0" Foreground="{DynamicResource PrimaryTextColor}"/>
             </StackPanel>
+            <TextBlock Text="Name" x:Name="txtClientName" Foreground="{DynamicResource PrimaryTextColor}" FontSize="30" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center"/> 
         </Grid>
     </Border>
 </Page>

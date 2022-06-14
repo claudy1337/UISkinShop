@@ -29,10 +29,12 @@ namespace WPFModernVerticalMenu.Pages
     public partial class SkinInformation : Page
     {
         public static SkinGet SkinGet;
-        public SkinInformation(SkinGet skinGet)
+        public static Client Client;
+        public SkinInformation(SkinGet skinGet, Client client)
         {
             InitializeComponent();
             SkinGet = skinGet;
+            Client = client;
             skinName.Text = SkinGet.Market_Name;
             skinPrice.Text = SkinGet.Market_Price;
             SkinGetInformation();
@@ -62,6 +64,11 @@ namespace WPFModernVerticalMenu.Pages
                 return;
             }
             
+        }
+
+        private void BtnSkinBuy_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

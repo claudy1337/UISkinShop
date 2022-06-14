@@ -46,7 +46,7 @@ namespace WPFModernVerticalMenu
 
         private void BtnCreateAccount_Click(object sender, RoutedEventArgs e)
         {
-            Data.Model.Client clients = Data.Classes.BD_Connection.bd.Client.FirstOrDefault(c=>c.IdRole == 1 || c.ClientInformation.Login == TxtClientLogin.Text);
+            Data.Model.Client clients = Data.Classes.BD_Connection.bd.Client.FirstOrDefault(c=>c.ClientInformation.Login == TxtClientLogin.Text);
             if (string.IsNullOrWhiteSpace(TxtClientLogin.Text) && string.IsNullOrWhiteSpace(TxtClientName.Text) && string.IsNullOrWhiteSpace(TxtClientPassword.Password) || clients != null)
             {
                 MessageBox.Show("incorrect");
@@ -68,7 +68,7 @@ namespace WPFModernVerticalMenu
                 };
                 BD_Connection.bd.Client.Add(client);
                 BD_Connection.bd.SaveChanges();
-                Data.Classes.Client clientSet = new Client(clientInformation.Login, clientInformation.Name);
+                Data.Classes.Client clientSet = new Client(clientInformation.Login, clientInformation.Name, 2, 0," ");
                 MessageBox.Show("welcome " + client.ClientInformation.Name);
                 MainWindow main = new MainWindow(clientSet);
                 main.Show();

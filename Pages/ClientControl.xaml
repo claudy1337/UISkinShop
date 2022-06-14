@@ -18,8 +18,13 @@
                 <ColumnDefinition Width="350"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <ListView Width="110">
-                    <TextBlock Text="Login" FontSize="20" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium"/>
+                <ListView Width="110" x:Name="ClientList" SelectionChanged="ClientList_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ClientInformation.Login}" FontSize="20" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                   
                 </ListView>
             </StackPanel>
             <StackPanel Grid.Column="1">
@@ -34,6 +39,7 @@
                     <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                         
                         <TextBox Width="200"
+                x:Name="txtClientName"
                 MaxLength="35"
                 MaxWidth="200"
                 Margin="0,20,0,0"
@@ -42,6 +48,7 @@
                 material:HintAssist.Hint="Name"/>
 
                         <TextBox Width="200"
+                x:Name="txtClientLink"
                 MaxWidth="200"
                 MaxLength="45"
                 Margin="0,20,0,0"
@@ -52,10 +59,12 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
-                        <TextBlock Text="1414" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20" Margin="0,0,0,10"/>
+                        <TextBlock x:Name="txtBlance" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontSize="20" Margin="0,0,0,10"/>
                         <Button
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
+                 x:Name="BtnEditClient"
+                 Click="BtnEditClient_Click"
                  Grid.Row="2"
                  Width="200"
                  Height="40"
@@ -63,10 +72,10 @@
                  Style="{StaticResource MaterialDesignRaisedLightButton}"
                  material:ButtonAssist.CornerRadius="5"
                  ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Cursor="Hand">
                             <TextBlock
                         Foreground="{DynamicResource PrimaryTextColor}"
-                        Text="Enter" FontFamily="Poppins"/>
+                        Text="Edit" FontFamily="Poppins"/>
                         </Button>
                     </StackPanel>
                 </Grid>
