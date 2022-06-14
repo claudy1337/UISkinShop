@@ -49,7 +49,7 @@ namespace WPFModernVerticalMenu
             }
             else if (client != null)
             {
-                Data.Classes.Client clientSet = new Data.Classes.Client(client.ClientInformation.Login, client.ClientInformation.Name, Convert.ToInt32(client.IdRole), Convert.ToDecimal(client.ClientInformation.Balance), client.ClientInformation.Link);
+                Data.Classes.Client clientSet = new Data.Classes.Client(client.ClientInformation.Login, client.ClientInformation.Name, Convert.ToInt32(client.IdRole), client.ClientInformation.Balance.ToString(), client.ClientInformation.Link, client.idClient);
                 MessageBox.Show("welcome " + client.ClientInformation.Name);
                 MainWindow main = new MainWindow(clientSet);
                 main.Show();

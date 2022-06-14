@@ -28,32 +28,34 @@ namespace WPFModernVerticalMenu.Pages
     /// </summary>
     public partial class SkinInformation : Page
     {
-        public static SkinGet SkinGet;
-        public static Client Client;
-        public SkinInformation(SkinGet skinGet, Client client)
+        public static Data.Classes.SkinGet SkinGets;
+        public static Client Clients;
+        public SkinInformation(Data.Classes.SkinGet skinGet, Client client)
         {
             InitializeComponent();
-            SkinGet = skinGet;
-            Client = client;
-            skinName.Text = SkinGet.Market_Name;
-            skinPrice.Text = SkinGet.Market_Price;
+            SkinGets = skinGet;
+            Clients = client;
+            skinName.Text = SkinGets.Market_Name;
+            skinPrice.Text = SkinGets.Market_Price;
+            ClientName.Text = SkinGets.ClientName;
+            ClientLogin.Text = SkinGets.ClientLogin;
             SkinGetInformation();
         }
         public void SkinGetInformation()
         {
             try
             {
-                string url = "http://csgobackpack.net/api/GetItemPrice/?currency=USD&id=" + SkinGet.Market_Name + "&time=7&icon=1";
+                string url = "http://csgobackpack.net/api/GetItemPrice/?currency=USD&id=" + SkinGets.Market_Name + "&time=7&icon=1";
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 Stream stream = response.GetResponseStream();
                 StreamReader sr = new StreamReader(stream);
                 string sReadData = sr.ReadToEnd();
                 response.Close();
-
                 dynamic data = JsonConvert.DeserializeObject(sReadData);
                 var skin = JsonConvert.DeserializeObject<SkinCertain.Rootobject>(data.ToString());
-
+                SkinGets.ImgSkin = skin.icon;
+                SkinGets.Currency = skin.currency;
                 imgSkin.Source = new BitmapImage(new Uri(skin.icon, UriKind.RelativeOrAbsolute));
                 AveragePrice.Text = skin.average_price;
                 LowestPrice.Text = skin.lowest_price;
@@ -62,13 +64,39 @@ namespace WPFModernVerticalMenu.Pages
             {
                 MessageBox.Show("connect error");
                 return;
-            }
-            
+            } 
         }
 
         private void BtnSkinBuy_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                    Data.Model.Skin skin = new Data.Model.Skin
+                    {
+                        idClient = Clients.Id,
+                        AveragePrice = AveragePrice.Text,
+                        ImageUrl = SkinGets.ImgSkin,
+                        LowestPrice = LowestPrice.Text,
+                        Currency = SkinGets.Currency,
+                        Price = SkinGets.Market_Price,
+                        Status = false,
+                        Name = SkinGets.Market_Name
+                    };
+                    Data.Model.Operation operation = new Data.Model.Operation
+                    {
+                        idSkin = skin.idSkin,
+                        Date = DateTime.Now.Date,
+                        TypeOperation = "buy skin"
+                    };
+                    BD_Connection.bd.Skin.Add(skin);
+                    BD_Connection.bd.Operation.Add(operation);
+                    BD_Connection.bd.SaveChanges();
+                    MessageBox.Show("buying " + SkinGets.Market_Name);
+            }
+            catch(Exception)
+            {
+                return;
+            }
         }
     }
 }

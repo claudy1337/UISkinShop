@@ -52,7 +52,7 @@ namespace WPFModernVerticalMenu.Pages
         private void listMarket_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var skin = listMarket.SelectedItem as SkinShortly.Item;
-            SkinGet skinget = new SkinGet(skin.market_hash_name, skin.price, "CSGO-BackPack");
+            SkinGet skinget = new SkinGet(skin.market_hash_name, skin.price, "CSGO-BackPack", "Shop", "/Resources/logoCS.png", null, null);
             NavigationService.Navigate(new SkinInformation(skinget, Client));
         }
 

@@ -149,7 +149,7 @@ namespace WPFModernVerticalMenu
 
         private void btnClientOrder_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/ClientOrder.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new Pages.ClientOrder(Client));
         }
 
         private void btnClienBalance_MouseEnter(object sender, MouseEventArgs e)

@@ -44,7 +44,7 @@ namespace WPFModernVerticalMenu.Pages
                     if (client != null)
                     {
                         client.ClientInformation.Balance += Convert.ToDecimal(txtSummAccount.Text);
-                        Client.Balance = Convert.ToDecimal(client.ClientInformation.Balance);
+                        Client.Balance = client.ClientInformation.Balance.ToString();
                         BD_Connection.bd.SaveChanges();
                         MessageBox.Show("balance add: " + txtSummAccount.Text);
                         Refresh();

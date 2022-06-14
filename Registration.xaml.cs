@@ -68,7 +68,8 @@ namespace WPFModernVerticalMenu
                 };
                 BD_Connection.bd.Client.Add(client);
                 BD_Connection.bd.SaveChanges();
-                Data.Classes.Client clientSet = new Client(clientInformation.Login, clientInformation.Name, 2, 0," ");
+                decimal balance = 0;
+                Data.Classes.Client clientSet = new Client(clientInformation.Login, clientInformation.Name, 2, balance.ToString()," ", client.idClient);
                 MessageBox.Show("welcome " + client.ClientInformation.Name);
                 MainWindow main = new MainWindow(clientSet);
                 main.Show();

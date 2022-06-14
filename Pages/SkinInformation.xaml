@@ -31,7 +31,7 @@
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Medium Price"
+                material:HintAssist.Hint="Hight Price"
                 x:Name="AveragePrice"/>
                         <TextBox Width="200"
                 MaxLength="35"
@@ -49,7 +49,7 @@
                                 <ColumnDefinition Width="150"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="/Resources/logoCS.png" Grid.Column="0" Width="150" Height="140" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Image Source="/Resources/logoCS.png" x:Name="ImgClient"  Grid.Column="0" Width="150" Height="140" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center" Width="200" HorizontalAlignment="Center">
                                 <TextBlock Foreground="{DynamicResource PrimaryTextColor}" x:Name="ClientName" Text="CSGO-BackPack" HorizontalAlignment="Center" FontSize="20"/>
                                 <TextBlock Foreground="{DynamicResource PrimaryTextColor}" x:Name="ClientLogin" Text="Shop" HorizontalAlignment="Center" FontSize="20"/>
@@ -63,7 +63,7 @@
                  Margin="25,0,0,0"
                  Width="150"
                  x:Name="BtnSkinBuy"
-                 Click="BtnSkinBuy_Click"
+                Click="BtnSkinBuy_Click"
                  Height="40"
                  Background="#772250"
                  Style="{StaticResource MaterialDesignRaisedLightButton}"
