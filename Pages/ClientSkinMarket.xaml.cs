@@ -27,9 +27,14 @@ namespace WPFModernVerticalMenu.Pages
         {
             Clients = client;
             InitializeComponent();
-            listSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.Where(s => s.Status == true && s.Client.ClientInformation.Login !=Clients.Login && s.SkinSold == false).ToList();
+            GetList();
+            
         }
-
+        public void GetList()
+        {
+            listSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.Where(s => s.Status == true && s.Client.ClientInformation.Login != Clients.Login && s.SkinSold == false).ToList();
+            
+        }
         private void listSkin_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var skin = listSkin.SelectedItem as Data.Model.Skin;
@@ -37,11 +42,24 @@ namespace WPFModernVerticalMenu.Pages
             NavigationService.Navigate(new SkinInformation(skinget, Clients));
         }
 
+       
+
+        private void txtPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+            listSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.Where(s => s.Price == txtPrice.Text && s.Status == true && s.Client.ClientInformation.Login != Clients.Login && s.SkinSold == false).ToList();
+        }
+
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
-            listSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.Where(s => s.Status == true && s.Client.ClientInformation.Login != Clients.Login && s.Price == txtPrice.Text   //uglycode
-            || s.Status == true && s.Client.ClientInformation.Login != Clients.Login && s.LowestPrice == txtLowestPrice.Text).ToList();
-            
+            if (string.IsNullOrEmpty(txtPrice.Text))
+            {
+                GetList();
+            }
+            else
+            {
+                listSkin.ItemsSource = Data.Classes.BD_Connection.bd.Skin.Where(s => s.Status == true && s.Price == txtPrice.Text && s.Currency == CBCurrency.Text && s.Client.ClientInformation.Login != Clients.Login && s.SkinSold == false).ToList();
+            }
         }
     }
 }

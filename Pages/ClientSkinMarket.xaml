@@ -28,24 +28,16 @@
                         <ColumnDefinition Width="220"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0">
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock Text="Sort" HorizontalAlignment="Center" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"/>
                         <TextBox Width="200"
+                TextChanged="txtPrice_TextChanged"
                 x:Name="txtPrice"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Price"/>
-
-                        <TextBox Width="200"
-                x:Name="txtLowestPrice"
-                MaxWidth="200"
-                Margin="0,20,0,0"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Lowest Price"/>
-
                         <ComboBox
                             x:Name="CBCurrency"
                             Margin="0,20,0,0"
@@ -57,24 +49,21 @@
                         Content="USD" />
                             <ComboBoxItem
                         Content="RUB" />
-                            <ComboBoxItem
-                        Content="EUR" />
                         </ComboBox>
-
                         <Button
                  x:Name="BtnSearch"
                  Click="BtnSearch_Click"
-                 Margin="0,20,0,0"
-                 Height="40"
+                 Margin="0,10,0,0"
                  Width="200"
+                 Height="40"
                  Background="#772250"
                  Style="{StaticResource MaterialDesignRaisedLightButton}"
                  material:ButtonAssist.CornerRadius="5"
                  ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Cursor="Hand">
                             <TextBlock
                         Foreground="{DynamicResource PrimaryTextColor}"
-                        Text="Searh" FontFamily="Poppins"/>
+                        Text="SELL" FontFamily="Poppins"/>
                         </Button>
                     </StackPanel>
                     <ListView Grid.Row="1" Grid.Column="1" Width="590" Height="360" x:Name="listSkin" SelectionChanged="listSkin_SelectionChanged">
