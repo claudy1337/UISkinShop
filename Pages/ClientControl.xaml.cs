@@ -35,9 +35,11 @@ namespace WPFModernVerticalMenu.Pages
 
         private void ClientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var client = ClientList.SelectedItem as Data.Model.Client;
+
+            
             try
             {
+                    var client = ClientList.SelectedItem as Data.Model.Client;
                     txtClientName.Text = client.ClientInformation.Name;
                     txtBlance.Text = client.ClientInformation.Balance.ToString();
                     txtClientLink.Text = client.ClientInformation.Link;
@@ -52,18 +54,30 @@ namespace WPFModernVerticalMenu.Pages
 
         private void BtnEditClient_Click(object sender, RoutedEventArgs e)
         {
-            var selectedClient = ClientList.SelectedItem as Data.Model.Client;
-            if (selectedClient != null)
+            try
             {
-                var clients = Data.Classes.BD_Connection.bd.Client.Where(c => c.ClientInformation.Login == selectedClient.ClientInformation.Login).FirstOrDefault();
-                selectedClient.ClientInformation.Name = txtClientName.Text;
-                selectedClient.ClientInformation.Link = txtClientLink.Text;
-                BD_Connection.bd.SaveChanges();
-                MessageBox.Show("client edit");
-                Refresh();
+                    var selectedClient = ClientList.SelectedItem as Data.Model.Client;
+                    Data.Model.Client client = Data.Classes.BD_Connection.bd.Client.FirstOrDefault(c=>c.ClientInformation.Link == txtClientLink.Text);
+                    if (selectedClient != null && client == null)
+                    {
+                        var clients = Data.Classes.BD_Connection.bd.Client.Where(c => c.ClientInformation.Login == selectedClient.ClientInformation.Login).FirstOrDefault();
+                        selectedClient.ClientInformation.Name = txtClientName.Text;
+                        selectedClient.ClientInformation.Link = txtClientLink.Text;
+                        BD_Connection.bd.SaveChanges();
+                        MessageBox.Show("client edit");
+                        if (listSkin.SelectedIndex == -1)
+                        {
+                            return;
+                        }
+                    }
+                    else
+                        MessageBox.Show("incorrect");
             }
-            else
-                MessageBox.Show("incorrect");
+            catch(Exception)
+            {
+                return;
+            }
+           
         }
         public void Refresh()
         {
@@ -77,9 +91,25 @@ namespace WPFModernVerticalMenu.Pages
 
         private void listSkin_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var skin = listSkin.SelectedItem as Data.Model.Skin;
-            SkinGet skinGet = new SkinGet(skin.Name,skin.Price,skin.Client.ClientInformation.Login, skin.Client.ClientInformation.Name, null, skin.ImageUrl, skin.Currency);
-            NavigationService.Navigate(new SkinInformation(skinGet, Clients));
+            try
+            {
+                if (listSkin.SelectedIndex == -1)
+                {
+                    return;
+                }
+                else
+                {
+                    var skin = listSkin.SelectedItem as Data.Model.Skin;
+                    SkinGet skinGet = new SkinGet(skin.Name, skin.Price, skin.Client.ClientInformation.Login, skin.Client.ClientInformation.Name, null, skin.ImageUrl, skin.Currency);
+                    NavigationService.Navigate(new SkinInformation(skinGet, Clients));
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+            
         }
         public void OnPasteCommand(object sender, ExecutedRoutedEventArgs e)
         {

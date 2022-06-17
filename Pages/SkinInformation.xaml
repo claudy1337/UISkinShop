@@ -26,21 +26,23 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBox Width="200"
+                IsReadOnly="True" 
                 MaxLength="35"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Hight Price"
-                x:Name="AveragePrice"/>
+                x:Name="AveragePrice" Cursor="Arrow"/>
                         <TextBox Width="200"
+                IsReadOnly="True"
                 MaxLength="35"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Low Price"
-                x:Name="LowestPrice"/>
+                x:Name="LowestPrice" Cursor="Arrow"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1">

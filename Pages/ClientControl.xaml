@@ -39,13 +39,14 @@
                     <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                         
                         <TextBox Width="200"
+                 IsReadOnly="True"        
                 x:Name="txtClientName"
                 MaxLength="35"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Name"/>
+                material:HintAssist.Hint="Name" Cursor="Arrow"/>
 
                         <TextBox Width="200"
                 x:Name="txtClientLink"
