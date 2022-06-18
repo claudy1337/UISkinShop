@@ -26,14 +26,29 @@ namespace WPFModernVerticalMenu.Pages
         public static Data.Classes.Client Clients;
         public Home(Data.Classes.Client client)
         {
-            Clients = client;
-            InitializeComponent();
-            txtClientName.Text = client.Name.ToString();
-            txtClientLink.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
-            txtClientName.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
-            txtClientLogin.Text = client.Login.ToString();
-            txtClientBalance.Text = client.Balance.ToString();
-            txtClientLink.Text = client.Link.ToString();
+            try
+            {
+                Clients = client;
+                InitializeComponent();
+                txtClientName.Text = client.Name.ToString();
+                txtClientLink.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
+                txtClientName.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
+                txtClientLogin.Text = client.Login.ToString();
+                txtClientBalance.Text = client.Balance.ToString();
+                txtClientLink.Text = client.Link.ToString();
+                if (Clients.Link == null)
+                {
+                    txtClientLink.Text = null;
+                }
+                else if (Clients.Link != null)
+                {
+                    txtClientLink.Text = Clients.Link;
+                }
+            }
+            catch(Exception)
+            {
+                txtClientLink.Text = null;
+            }
         }
 
         private void BtnBalanceAdd_Click(object sender, RoutedEventArgs e)

@@ -37,9 +37,16 @@ namespace WPFModernVerticalMenu.Pages
         }
         private void listSkin_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var skin = listSkin.SelectedItem as Data.Model.Skin;
-            SkinGet skinget = new SkinGet(skin.Name, skin.Price, skin.Client.ClientInformation.Login, skin.Client.ClientInformation.Name, null, skin.ImageUrl, skin.Currency);
-            NavigationService.Navigate(new SkinInformation(skinget, Clients));
+            try
+            {
+                var skin = listSkin.SelectedItem as Data.Model.Skin;
+                SkinGet skinget = new SkinGet(skin.Name, skin.Price, skin.Client.ClientInformation.Login, skin.Client.ClientInformation.Name, null, skin.ImageUrl, skin.Currency);
+                NavigationService.Navigate(new SkinInformation(skinget, Clients));
+            }
+            catch (Exception)
+            {
+                
+            }
         }
 
        
